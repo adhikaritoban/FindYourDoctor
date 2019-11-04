@@ -53,13 +53,8 @@ public class Doctor_Profile_Activity extends AppCompatActivity{
         String comment = intent.getStringExtra("doctor_comment");
         String contact = intent.getStringExtra("doctor_contact");
         String gmail = intent.getStringExtra("doctor_gmail");
-        String sunday = intent.getStringExtra("sunday");
-        String monday = intent.getStringExtra("monday");
-        String tuesday = intent.getStringExtra("tuesday");
-        String wednesday = intent.getStringExtra("wednesday");
-        String thursday = intent.getStringExtra("thursday");
-        String friday = intent.getStringExtra("friday");
-        String saturday = intent.getStringExtra("saturday");
+
+        System.out.println("check int " + name);
 
         doctor_name = findViewById(R.id.doctor_name_profile);
         doctor_specialist = findViewById(R.id.doctor_specialist_profile);
@@ -70,13 +65,7 @@ public class Doctor_Profile_Activity extends AppCompatActivity{
         doctor_sms = findViewById(R.id.doctor_sms_profile);
         doctor_comment = findViewById(R.id.doctor_comment_profile);
         location_image = findViewById(R.id.location);
-        sundaySch = findViewById(R.id.sundayText);
-        mondaySch = findViewById(R.id.mondayText);
-        tuesdaySch = findViewById(R.id.tuesdayText);
-        wednesdaySch = findViewById(R.id.wednesdayText);
-        thursdaySch = findViewById(R.id.thursdayText);
-        fridaySch = findViewById(R.id.fridayText);
-        saturdaySch = findViewById(R.id.saturdayText);
+
 
         doctor_name.setText(name);
         doctor_specialist.setText(specialist);
@@ -86,13 +75,7 @@ public class Doctor_Profile_Activity extends AppCompatActivity{
         doctor_phone.setText(contact);
         doctor_sms.setText(contact);
         doctor_comment.setText(comment);
-        sundaySch.setText(sunday);
-        mondaySch.setText(monday);
-        tuesdaySch.setText(tuesday);
-        wednesdaySch.setText(wednesday);
-        thursdaySch.setText(thursday);
-        fridaySch.setText(friday);
-        saturdaySch.setText(saturday);
+
 
         ImageView imageView = findViewById(R.id.cross);
         imageView.setOnClickListener(new View.OnClickListener() {

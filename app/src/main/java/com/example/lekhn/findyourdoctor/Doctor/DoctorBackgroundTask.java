@@ -5,6 +5,9 @@ import android.database.sqlite.SQLiteDatabase;
 import android.os.AsyncTask;
 import android.util.Log;
 
+import com.example.lekhn.findyourdoctor.utilities.ConnectionServer;
+import com.example.lekhn.findyourdoctor.utilities.IParser;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,70 +18,31 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
+import java.util.ArrayList;
 
-public class DoctorBackgroundTask extends AsyncTask<Void, Void, Void> {
+public class DoctorBackgroundTask extends AsyncTask<String, Void, String> {
 
     private Context ctx;
+    private IParser iParser;
 
-    public DoctorBackgroundTask(Context ctx){
+    ArrayList<DoctorGetterSetter> doctorGetterSetterArrayList = new ArrayList<>();
+
+    public DoctorBackgroundTask(Context ctx, IParser iParser) {
         this.ctx = ctx;
+        this.iParser = iParser;
     }
+
     @Override
     protected void onPreExecute() {
         super.onPreExecute();
+        if (iParser != null) {
+            iParser.onPreExecute();
+        }
     }
 
     @Override
-    protected Void doInBackground(Void... voids) {
-        try {
-            String json_url = "http://192.168.43.180/fyp/get_doctor_details.php";
-            URL url = new URL(json_url);
-            HttpURLConnection httpURLConnection = (HttpURLConnection)url.openConnection();
-            InputStream inputStream = httpURLConnection.getInputStream();
-            BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream));
-            StringBuilder stringBuilder = new StringBuilder();
-            String line;
-            while ((line=bufferedReader.readLine())!=null){
-                stringBuilder.append(line).append("\n");
-            }
-            httpURLConnection.disconnect();
-            inputStream.close();
-            bufferedReader.close();
-            String json_data = stringBuilder.toString().trim();
-            Log.d("JSON-String", json_data);
-            JSONObject jsonObject = new JSONObject(json_data);
-            JSONArray jsonArray = jsonObject.getJSONArray("server_response");
-            DoctorDBHelper doctorDBHelper = new DoctorDBHelper(ctx);
-            SQLiteDatabase sqLiteDatabase = doctorDBHelper.getWritableDatabase();
-
-            int count = 0;
-            while (count<jsonArray.length()){
-                JSONObject JO = jsonArray.getJSONObject(count);
-                doctorDBHelper.insertData(JO.getString("doctor_id"),
-                        JO.getString("doctor_name"),
-                        JO.getString("specialist"),
-                        JO.getString("hospital_name"),
-                        JO.getString("image_url"),
-                        JO.getString("comment"),
-                        JO.getString("contact"),
-                        JO.getString("gmail"),
-                        JO.getString("sunday"),
-                        JO.getString("monday"),
-                        JO.getString("tuesday"),
-                        JO.getString("wednesday"),
-                        JO.getString("thursday"),
-                        JO.getString("friday"),
-                        JO.getString("saturday"),
-                        JO.getString("disease_name"),
-                        sqLiteDatabase);
-                count++;
-            }
-            doctorDBHelper.close();
-
-        } catch (IOException | JSONException e) {
-            e.printStackTrace();
-        }
-        return null;
+    protected String doInBackground(String... string) {
+        return ConnectionServer.executeGet("https://sushil-carol.000webhostapp.com/get_doctor_details.php");
     }
 
     @Override
@@ -87,7 +51,48 @@ public class DoctorBackgroundTask extends AsyncTask<Void, Void, Void> {
     }
 
     @Override
-    protected void onPostExecute(Void aVoid) {
-        super.onPostExecute(aVoid);
+    protected void onPostExecute(String s) {
+        super.onPostExecute(s);
+        System.out.println("HomeNewparser_response " + s);
+
+        try {
+            JSONObject jsonObjectMain = new JSONObject(s);
+
+            DoctorGetterSetter doctorGetterSetter;
+
+            JSONArray jsonarray = jsonObjectMain.getJSONArray("server_response");
+
+            for (int i = 0; i < jsonarray.length(); i++) {
+                JSONObject object = jsonarray.getJSONObject(i);
+
+                doctorGetterSetter = new DoctorGetterSetter();
+
+                doctorGetterSetter.setDoctor_id(object.getString("doctor_id"));
+                doctorGetterSetter.setDoctor_name(object.getString("doctor_name"));
+                doctorGetterSetter.setHospital_name(object.getString("hospital_name"));
+                doctorGetterSetter.setImage_url(object.getString("image_url"));
+                doctorGetterSetter.setComment(object.getString("comment"));
+                doctorGetterSetter.setContact(object.getString("contact"));
+                doctorGetterSetter.setGmail(object.getString("gmail"));
+                doctorGetterSetter.setDisease_name(object.getString("disease_name"));
+
+                System.out.println(object.getString("doctor_name") );
+
+                doctorGetterSetterArrayList.add(doctorGetterSetter);
+            }
+
+            if (iParser != null) {
+                iParser.onPostExecute(doctorGetterSetterArrayList);
+            } else {
+                if (iParser != null) {
+                    iParser.onPostFailure();
+                }
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+            if (iParser != null)
+                iParser.onPostFailure();
+        }
     }
 }
