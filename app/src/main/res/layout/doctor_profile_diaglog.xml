@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/doctor_dialog_layout"
+    android:paddingBottom="10dp"
+    android:background="#ffffff">
+
+    <ImageView
+        android:id="@+id/dialogImage"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/ic_launcher" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/dialogSubject"
+        android:maxLines="1"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dialogImage"
+        android:layout_marginTop="20dp"
+        android:hint="Subject"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dialogSubject"
+        android:layout_marginTop="20dp"
+        android:hint="Message"
+        android:id="@+id/dialogMessage" />
+    <Button
+        android:id="@+id/sendMailBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/dialogMessage"
+        android:layout_marginStart="70dp"
+        android:layout_marginTop="30dp"
+        android:text="Send"
+        android:background="#ffffff"
+        android:textStyle="bold"
+        android:textColor="@color/colorPrimaryDark"
+        android:textSize="20dp" />
+    <Button
+        android:id="@+id/cancelMailBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/sendMailBtn"
+        android:layout_alignBottom="@+id/sendMailBtn"
+        android:layout_marginStart="20dp"
+        android:background="#ffffff"
+        android:layout_toEndOf="@+id/sendMailBtn"
+        android:text="Cancel"
+        android:textColor="#880a0a"
+        android:textSize="20dp"
+        android:textStyle="bold"/>
+</RelativeLayout>

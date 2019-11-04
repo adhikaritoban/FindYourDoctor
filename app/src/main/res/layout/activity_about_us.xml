@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.lekhn.findyourdoctor.AboutUsActivity">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+        <include
+            android:layout_height="wrap_content"
+            android:layout_width="match_parent"
+            layout="@layout/option_menu_toolbar" />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/main_container"
+            >
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/paragraph"
+                    android:text="Find your doctor is one of the most popular android application. At Find your Doctor, we aim to help you to calculate your BMI, to find and donate blood from all over the Nepal. We also show you the information of different hospital and doctor. To help for visitor we also provide you an google map so that you do not need to ask people and spend lots of money for transportation. We show you the available time of doctor in different hospital in order to save your money and time. We also provide and medicine remainder for you, so that you will not forget to take your medicine on time and also we set and health calender, so that you will not miss when and where you have to visit doctor again"
+                    android:textColor="#063002"
+                    android:layout_marginLeft="5dp"
+                    android:layout_marginTop="5dp"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Our Team"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#4d0202"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lekhnath Katuwal"
+                    android:layout_gravity="center_vertical|end"
+                    android:layout_marginLeft="35dp"
+                    android:textColor="#063002"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Contact Info"
+                    android:textSize="20sp"
+                    android:textStyle="bold"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:textColor="#4d0202"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Itahari-4, Halgada, Nepal"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginLeft="35dp"
+                    android:textColor="#063002"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Lekhnathkatuwal21@gmail.com"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginLeft="35dp"
+                    android:textColor="#063002"
+                    />
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="+9779812373070"
+                    android:layout_gravity="center_vertical|right"
+                    android:layout_marginLeft="35dp"
+                    android:textColor="#063002"
+                    />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="147dp"
+                    android:src="@drawable/header"/>
+
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+</RelativeLayout>

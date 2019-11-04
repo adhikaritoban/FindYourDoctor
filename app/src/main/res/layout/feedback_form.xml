@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#ffffff"
+    tools:context="contact.com.findyourdoctor.feedback_activity">
+    <include
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        layout="@layout/layout_toolbar" />
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/name_Text"
+        android:hint="Enter your name"/>
+
+    <AutoCompleteTextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/email_Text"
+        android:hint="Email address for eg:- abc123@gmail.com"/>
+
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:id="@+id/subject_Text"
+        android:hint="Subject"
+        />
+
+    <EditText
+        android:inputType="textMultiLine"
+        android:layout_height="wrap_content"
+        android:layout_width="match_parent"
+        android:lines="8"
+        android:minLines="6"
+        android:maxLines="10"
+        android:gravity="top|left"
+        android:scrollbars="vertical"
+        android:hint="Your message"
+        android:id="@+id/message_Text"/>
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Send"
+        android:id="@+id/sendBtn"
+        android:background="#044e16"
+        android:textColor="#ffffff"
+        android:onClick="sendBtn" />
+
+</LinearLayout>

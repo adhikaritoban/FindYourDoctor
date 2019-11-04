@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/home_id"
+            android:title="Home"
+            android:icon="@drawable/home"/>
+        <item
+            android:id="@+id/doctor_id"
+            android:title="Doctor"
+            android:icon="@drawable/doctor"
+            />
+        <item
+            android:id="@+id/hospital_id"
+            android:title="Hospital"
+            android:icon="@drawable/hospital"
+            />
+        <item
+            android:id="@+id/blood_id"
+            android:title="Blood Management"
+            android:icon="@drawable/blood"
+            />
+        <item
+            android:id="@+id/bmi_id"
+            android:title="BMI Calculator"
+            android:icon="@drawable/bmi"
+            />
+        <item
+            android:id="@+id/calendar_id"
+            android:title="Health Calendar"
+            android:icon="@drawable/calender"
+            />
+        <item
+            android:id="@+id/medicine_id"
+            android:title="Medicine Remindar"
+            android:icon="@drawable/pill"
+            />
+    </group>
+    <item android:title="Social">
+        <menu>
+            <item
+                android:id="@+id/facebook_id"
+                android:icon="@drawable/facebook"
+                android:title="Facebook"></item>
+            <item
+                android:id="@+id/gmail_id"
+                android:icon="@drawable/gmail"
+                android:title="Gmail"></item>
+            <item
+                android:id="@+id/share_id"
+                android:icon="@drawable/share"
+                android:title="Share"></item>
+        <item
+            android:id="@+id/logout"
+            android:layout_height="wrap_content"
+            android:icon="@drawable/logout"
+            android:title="Log Out"></item>
+        </menu>
+    </item>
+
+</menu>
