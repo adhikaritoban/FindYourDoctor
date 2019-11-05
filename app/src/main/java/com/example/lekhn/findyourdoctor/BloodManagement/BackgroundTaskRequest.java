@@ -21,7 +21,7 @@ public class BackgroundTaskRequest extends AsyncTask<Void, Void, Void> {
 
     Context ctx;
     ProgressDialog progressDialog;
-    private String json_url = "http://192.168.43.9/fyp/get_donor_details.php";
+    private String json_url = "https://sushil-carol.000webhostapp.com/get_donor_details.php";
 
     public BackgroundTaskRequest(Context ctx){
         this.ctx = ctx;

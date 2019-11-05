@@ -53,11 +53,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     LocationHelper.LocationResult locationResult;
     LocationHelper locationHelper;
     ProgressDialog progressDialog;
-    LatLng currentMarker,destinationmarker,destinationmarker1;
-    String  source,destination,destination1;
-    private  List<Marker> originMarkers = new ArrayList<>();
-    private  List<Marker> destinationMarkers = new ArrayList<>();
-    private  List<Polyline> polylinePaths = new ArrayList<>();
+    LatLng currentMarker, destinationmarker, destinationmarker1;
+    String source, destination, destination1;
+    private List<Marker> originMarkers = new ArrayList<>();
+    private List<Marker> destinationMarkers = new ArrayList<>();
+    private List<Polyline> polylinePaths = new ArrayList<>();
 
     // LatLng CurrentLatLng;
     LocationManager locationManager;
@@ -95,12 +95,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
         mMap = googleMap;
         if (checkLocationPermission()) {
             getLocation();
-        }
-        else {
+        } else {
             Intent intent = new Intent(this, Doctor_Profile_Activity.class);
             startActivity(intent);
             finish();
-            Toast.makeText(this,"Permission Denied by you",Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Permission Denied by you", Toast.LENGTH_SHORT).show();
         }
 
         final Handler handler = new Handler();
@@ -117,10 +116,10 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 currentMarker = new LatLng(latitude, longitude);
                 source = currentMarker.latitude + "," + currentMarker.longitude;
 
-                destinationmarker = new LatLng(27.6941636,85.3280989);
+                destinationmarker = new LatLng(27.6941636, 85.3280989);
                 destination = destinationmarker.latitude + "," + destinationmarker.longitude;
 
-                destinationmarker1 = new LatLng(27.7084,85.3260);
+                destinationmarker1 = new LatLng(27.7084, 85.3260);
                 destination1 = destinationmarker1.latitude + "," + destinationmarker1.longitude;
 
                 //mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
@@ -132,17 +131,14 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
                 FindDirection();
             }
         }, 2000);
-
-
-
     }
 
     private void FindDirection() {
 
-        try{
-            new DirectionFinder((DirectionFinderListener)this,source,destination).execute();
+        try {
+            new DirectionFinder((DirectionFinderListener) this, source, destination).execute();
 
-        }catch (UnsupportedEncodingException e){
+        } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
     }
@@ -207,6 +203,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onDirectionFinderStart() {
 
+
         progressDialog = ProgressDialog.show(this, "Please wait.",
                 "Finding direction..!", true);
 
@@ -245,8 +242,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 //            Toast.makeText(this, "Duration : " + route.duration.text , Toast.LENGTH_SHORT).show();
 //            Toast.makeText(this, "Distance : " + route.distance.text, Toast.LENGTH_SHORT).show();
 
-            Log.d("Route Distance: ",route.distance.text);
-            Log.d("Route Duration: ",route.duration.text);
+            Log.d("Route Distance: ", route.distance.text);
+            Log.d("Route Duration: ", route.duration.text);
 
             PolylineOptions polylineOptions = new PolylineOptions().
                     geodesic(true).
@@ -270,10 +267,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
             CameraUpdate cameraUpdate = CameraUpdateFactory.newLatLngBounds(bounds, 60);
             mMap.moveCamera(cameraUpdate);
-
         }
-
-
     }
 
     public boolean checkLocationPermission() {
@@ -339,11 +333,9 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
                     // permission denied, boo! Disable the
                     // functionality that depends on this permission.
-
                 }
                 return;
             }
-
         }
     }
 }

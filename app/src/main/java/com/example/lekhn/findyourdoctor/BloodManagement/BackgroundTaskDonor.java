@@ -31,7 +31,7 @@ public class BackgroundTaskDonor extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... params) {
-        String register_url = "http://192.168.43.9/fyp/donor_details.php";
+        String register_url = "https://sushil-carol.000webhostapp.com/donor_details.php";
         String method = params[0];
 
         if (method.equals("register")) {

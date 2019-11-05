@@ -25,7 +25,7 @@ public class DirectionFinder {
 
 
     private static final String DIRECTION_URL_API = "https://maps.googleapis.com/maps/api/directions/json?";
-    private static final String GOOGLE_API_KEY = "AIzaSyD9I3KdcGFIPPBxge9X9MlBI_gO8JyAA_I";
+    private static final String GOOGLE_API_KEY = "AIzaSyAIGAfqb9TdTYJzZJcCZe1ndyX2wgT774Y";
 //    private static final String GOOGLE_API_KEY = "AIzaSyDGEVB_UpuzahPffmZO0z_McYBh_svdCUs";
 
     private DirectionFinderListener listener;
@@ -33,22 +33,12 @@ public class DirectionFinder {
     private String destination;
     private Context context;
 
-    public DirectionFinder(Context context) {
-
-        this.context = context;
-        this.listener = (DirectionFinderListener) this.context;
-
-    }
-
-
     public DirectionFinder(DirectionFinderListener listner, String origin, String destination) {
 
         this.listener = listner;
         this.origin = origin;
         this.destination = destination;
     }
-
-
 
 
     public void execute() throws UnsupportedEncodingException {
@@ -60,11 +50,9 @@ public class DirectionFinder {
         String urlOrigin = URLEncoder.encode(origin, "utf-8");
         String urlDestination = URLEncoder.encode(destination, "utf-8");
 
-        Log.d("Direction URl Api : ",DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=" + GOOGLE_API_KEY);
+        Log.d("Direction URl Api : ", DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=" + GOOGLE_API_KEY);
         return DIRECTION_URL_API + "origin=" + urlOrigin + "&destination=" + urlDestination + "&key=" + GOOGLE_API_KEY;
     }
-
-
 
 
     private class DownloadRawData extends AsyncTask<String, Void, String> {
@@ -97,7 +85,7 @@ public class DirectionFinder {
         protected void onPostExecute(String res) {
             try {
                 parseJSon(res);
-                Log.d("JSON ROUTE Response",res);
+                Log.d("JSON ROUTE Response", res);
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -138,7 +126,6 @@ public class DirectionFinder {
     }
 
 
-
     private List<LatLng> decodePolyLine(final String poly) {
         int len = poly.length();
         int index = 0;
@@ -175,6 +162,4 @@ public class DirectionFinder {
 
         return decoded;
     }
-
-
 }

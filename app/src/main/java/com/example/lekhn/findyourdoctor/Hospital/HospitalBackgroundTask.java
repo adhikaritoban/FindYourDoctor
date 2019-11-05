@@ -18,7 +18,7 @@ import java.net.URL;
 
 public class HospitalBackgroundTask extends AsyncTask<Void, Void, Void> {
     Context ctx;
-    private String json_url = "http://192.168.43.180/fyp/get_hospital_details.php";
+    private String json_url = "https://sushil-carol.000webhostapp.com/get_hospital_details.php";
 
     public HospitalBackgroundTask(Context ctx){
         this.ctx = ctx;
@@ -55,7 +55,7 @@ public class HospitalBackgroundTask extends AsyncTask<Void, Void, Void> {
             int count = 0;
             while (count<jsonArray.length()){
                 JSONObject JO = jsonArray.getJSONObject(count);
-                hospitalDBHelper.insert_hos_Data(JO.getString("hospital_id"),JO.getString("hospital_names"),
+                hospitalDBHelper.insert_hos_Data(JO.getString("hospital_id"),JO.getString("hospital_name"),
                         JO.getString("hospital_address"),
                         JO.getString("image_url"),
                         JO.getString("total_doc"),
